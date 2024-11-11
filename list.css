@@ -57,6 +57,7 @@ nav li {
     max-width: 100vw;
     box-sizing: border-box;
     padding: 1rem;
+    padding-top: 0;
     height: calc(100vh - 32px);
     overflow: scroll;
     scroll-behavior: smooth;
@@ -65,7 +66,7 @@ h3 {
     margin-top: 0;
     margin-left: 12pt;
     margin-bottom: 8pt;
-    padding-top: 8pt;
+    padding-top: 12pt;
 }
 .category {
     display: flex;
@@ -73,7 +74,7 @@ h3 {
     align-items: flex-start;
     justify-content: left;
     flex-wrap: wrap;
-    margin-bottom: 8pt;
+    margin-bottom: 4pt;
 }
 .item {
     border: none;
