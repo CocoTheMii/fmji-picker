@@ -13,12 +13,18 @@ const CategoryIds = {
 function populate(list) {
     for (const category in CategoryIds) {
         const id = CategoryIds[category];
+        const section = document.getElementById(id);
         for (const emoji of list[category]) {
+            const name = emoji["name"];
+            const codepoint = emoji["codepoint"];
             const item = document.createElement("button");
+
             item.className = "item";
-            item.style.backgroundImage = `url("https://gh.vercte.net/forumoji/assets/emoji/15x15/${emoji}.png")`;
-            item.setAttribute("onclick", `select("${emoji}")`);
-            document.getElementById(id).appendChild(item);
+            item.title = name;
+            item.style.backgroundImage = `url("https://gh.vercte.net/forumoji/assets/emoji/15x15/${codepoint}.png")`;
+            item.setAttribute("onclick", `select("${codepoint}")`);
+
+            section.appendChild(item);
         }
     }
 }
@@ -37,19 +43,17 @@ async function getEmojiList() {
     const UnicodeList = await (await fetch("assets/unicode-emoji.json")).json();
     const HiddenEmoji = await (await fetch("assets/hidden-emoji.json")).json();
 
-    console.log(EmojiList);
-    console.log(UnicodeList);
-    console.log(HiddenEmoji);
-
     for (const collection of UnicodeList.contents) {
         const category = collection.category;
         if (category == "Component") continue;
         for (const subcollection of collection.contents) {
             for (const emoji of subcollection.contents) {
+                const name = emoji.name;
                 const codepoint = normalizeCodepoint(emoji.codepoint);
+
                 if (EmojiList.hasOwnProperty(codepoint)) {
                     if(!toReturn[category]) toReturn[category] = [];
-                    toReturn[category].push(codepoint);
+                    toReturn[category].push({name, codepoint});
                 }
             }
         }
