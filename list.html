@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>List</title>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="list.css"/>
+        <script>
+            function returnMsg(msg) {
+                window.parent.postMessage("You clicked the button!", "*");
+            }
+            function populate() {
+                var categories = document.getElementsByClassName("category");
+                for (let c of categories) {
+                    for (let x = 0; x < 120; x++) {
+                        let item = document.createElement("button");
+                        item.className = "item";
+                        c.appendChild(item);
+                    }
+                }
+            }
+            window.onload = function() {
+                populate();
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a class="nav-item" style="--icon: url('img/c1.png')" href="#se"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c2.png')" href="#pb"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c3.png')" href="#an"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c4.png')" href="#fd"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c5.png')" href="#tp"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c6.png')" href="#a"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c7.png')" href="#o"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c8.png')" href="#s"></a></li>
+                <li><a class="nav-item" style="--icon: url('img/c9.png')" href="#f"></a></li>
+            </ul>
+        </nav>
+        <div id="list">
+            <h3 id="se">Smileys & Emotion</h3><div class="category"></div>
+            <h3 id="pb">People & Body</h3><div class="category"></div>
+            <h3 id="an">Animals & Nature</h3><div class="category"></div>
+            <h3 id="fd">Food & Drink</h3><div class="category"></div>
+            <h3 id="tp">Travel & Places</h3><div class="category"></div>
+            <h3 id="a">Activities</h3><div class="category"></div>
+            <h3 id="o">Objects</h3><div class="category"></div>
+            <h3 id="s">Symbols</h3><div class="category"></div>
+            <h3 id="f">Flags</h3><div class="category"></div>
+        </div>
+    </body>
+</html>

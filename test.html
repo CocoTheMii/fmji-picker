@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Parent Page</title>
+        <script>
+            window.addEventListener('message', function(event) {
+                var para = document.getElementById("iframe-msg");
+                para.innerHTML = event.data;
+            })
+        </script>
+    </head>
+    <body>
+        <iframe src="list.html" width="410px"></iframe>
+        <p id="iframe-msg"></p>
+    </body>
+</html>
