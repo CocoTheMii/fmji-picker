@@ -38,10 +38,14 @@ function normalizeCodepoint(codepoint) {
 
 async function getEmojiList() {
     const toReturn = {};
-    //TODO: ideally get these from the forumoji repository instead
-    const EmojiList = await (await fetch("assets/emoji.json")).json();
-    const UnicodeList = await (await fetch("assets/unicode-emoji.json")).json();
-    const HiddenEmoji = await (await fetch("assets/hidden-emoji.json")).json();
+    const FetchJson = [
+        await fetch("https://raw.githubusercontent.com/vercte/forumoji/refs/heads/main/assets/emoji.json"),
+        await fetch("https://raw.githubusercontent.com/vercte/forumoji/refs/heads/main/assets/unicode-emoji.json"),
+        await fetch("https://raw.githubusercontent.com/vercte/forumoji/refs/heads/main/assets/hidden-emoji.json")
+    ];
+    const EmojiList = JSON.parse(await FetchJson[0].text());
+    const UnicodeList = JSON.parse(await FetchJson[1].text());
+    const HiddenEmoji = JSON.parse(await FetchJson[2].text());
 
     for (const collection of UnicodeList.contents) {
         const category = collection.category;
