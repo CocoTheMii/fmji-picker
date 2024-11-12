@@ -51,7 +51,7 @@ async function getEmojiList() {
                 const name = emoji.name;
                 const codepoint = normalizeCodepoint(emoji.codepoint);
 
-                if (EmojiList.hasOwnProperty(codepoint)) {
+                if (EmojiList.hasOwnProperty(codepoint) && !(HiddenEmoji.hasOwnProperty(codepoint))) {
                     if(!toReturn[category]) toReturn[category] = [];
                     toReturn[category].push({name, codepoint});
                 }
