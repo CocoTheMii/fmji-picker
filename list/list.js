@@ -47,8 +47,6 @@ async function getEmojiList() {
     const UnicodeList = JSON.parse(await FetchJson[1].text());
     const HiddenEmoji = JSON.parse(await FetchJson[2].text());
 
-    console.log(HiddenEmoji["codepoints"]);
-
     for (const collection of UnicodeList.contents) {
         const category = collection.category;
         if (category == "Component") continue;
